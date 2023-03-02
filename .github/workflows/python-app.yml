@@ -33,3 +33,17 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
+
+
+carbonserver:
+  build:
+    context: ./carbonserver/
+    dockerfile: ./docker/Dockerfile
+  
+  volumes:
+    - ./carbonserver:/carbonserver
+    - /carbonserver/.tox
+  ports:
+    - 8008:8000
+  networks:
+    - codecarbon_net
